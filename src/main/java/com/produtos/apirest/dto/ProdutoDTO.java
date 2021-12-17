@@ -1,5 +1,6 @@
 package com.produtos.apirest.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +10,10 @@ import com.produtos.apirest.model.Produto;
 import lombok.Getter;
 
 @Getter
-public class ProdutoDTO {
+public class ProdutoDTO implements Serializable {
+	
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String nome;
 	private BigDecimal quantidade;
