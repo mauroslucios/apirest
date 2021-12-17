@@ -31,7 +31,7 @@ public class ProdutoResource {
 		return produtoService.findById(id);
 	}
 	
-	@PostMapping("/produtos")
+	@PostMapping("/produto")
 	public Produto insertProduto(@RequestBody Produto produto) {
 		return produtoService.insertProduto(produto);
 		
