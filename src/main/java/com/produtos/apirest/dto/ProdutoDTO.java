@@ -15,11 +15,13 @@ public class ProdutoDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private long id;
 	private String nome;
 	private BigDecimal quantidade;
 	private BigDecimal valor;
 	
 	public ProdutoDTO(Produto produto) {
+		this.id = produto.getId();
 		this.nome = produto.getNome();
 		this.quantidade = produto.getQuantidade();
 		this.valor = produto.getValor();
