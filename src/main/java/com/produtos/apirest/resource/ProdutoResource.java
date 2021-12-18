@@ -36,13 +36,13 @@ public class ProdutoResource {
 	}
 	
 	@GetMapping("/produto/{id}")
-	@ApiOperation(value="Retorna um produto pelo id")
+	@ApiOperation(value="Busca um produto pelo id")
 	public Produto findById(@PathVariable(value="id") long id){
 		return produtoService.findById(id);
 	}
 	
 	@PostMapping("/produto")
-	@ApiOperation(value="Inseri um produto no banco")
+	@ApiOperation(value="Salva um produto no banco")
 	public Produto insertProduto(@RequestBody Produto produto) {
 		return produtoService.insertProduto(produto);
 		
