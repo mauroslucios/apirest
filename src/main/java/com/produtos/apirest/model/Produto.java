@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.RepresentationModel;
+
 @Entity
 @Table(name="tb_produto")
-public class Produto implements Serializable{
+public class Produto extends RepresentationModel<Produto> implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
