@@ -11,6 +11,7 @@ Crud de produtos
 - service
 - postgresql
 - postman
+- lombok
 
 #### Citação
 
