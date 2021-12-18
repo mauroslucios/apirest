@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.5.6</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.produtos</groupId>
 	<artifactId>apirest</artifactId>
@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<swagger.version>2.9.2</swagger.version>
 	</properties>
 	<dependencies>
 		<dependency>
