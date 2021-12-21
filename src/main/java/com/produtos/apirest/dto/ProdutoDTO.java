@@ -5,12 +5,14 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.produtos.apirest.model.Produto;
 
 import lombok.Getter;
 
 @Getter
-public class ProdutoDTO implements Serializable {
+public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;

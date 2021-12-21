@@ -11,6 +11,9 @@ import javax.persistence.Table;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name="tb_produto")
 public class Produto extends RepresentationModel<Produto> implements Serializable{

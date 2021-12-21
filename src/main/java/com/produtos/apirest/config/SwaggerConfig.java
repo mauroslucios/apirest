@@ -5,6 +5,10 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.hateoas.client.LinkDiscoverer;
+import org.springframework.hateoas.client.LinkDiscoverers;
+import org.springframework.hateoas.mediatype.collectionjson.CollectionJsonLinkDiscoverer;
+import org.springframework.plugin.core.SimplePluginRegistry;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -35,6 +39,13 @@ public class SwaggerConfig {
 		        .globalResponseMessage(RequestMethod.GET, responseMessageForGET());
 				
 	}
+	@Bean
+    public LinkDiscoverers discoverers() {
+        List<LinkDiscoverer> plugins = new ArrayList<>();
+        plugins.add(new CollectionJsonLinkDiscoverer());
+        return new LinkDiscoverers(SimplePluginRegistry.create(plugins));
+
+    }
 	
 	private ApiInfo metaInfo() {
 		return new ApiInfoBuilder() 
@@ -49,22 +60,22 @@ public class SwaggerConfig {
 	
 	private List<ResponseMessage> responseMessageForGET()
 	{
-	    return new ArrayList<ResponseMessage>() {/**
-			 * 
-			 */
+	    return new ArrayList<ResponseMessage>() {
+	    	
 			private static final long serialVersionUID = 1L;
 
-		{
-	        add(new ResponseMessageBuilder()
-	            .code(500)
-	            .message("500 message")
-	            .responseModel(new ModelRef("Error"))
-	            .build());
-	        add(new ResponseMessageBuilder()
-	            .code(403)
-	            .message("Forbidden!")
-	            .build());
-	    }};
+			{
+		        add(new ResponseMessageBuilder()
+		            .code(500)
+		            .message("500 message")
+		            .responseModel(new ModelRef("Error"))
+		            .build());
+		        add(new ResponseMessageBuilder()
+		            .code(403)
+		            .message("Forbidden!")
+		            .build());
+	    	}
+		};
 	}
 
 	

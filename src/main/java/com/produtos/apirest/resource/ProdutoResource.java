@@ -1,6 +1,8 @@
 package com.produtos.apirest.resource;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.produtos.apirest.dto.ProdutoDTO;
@@ -31,14 +34,23 @@ public class ProdutoResource {
 	
 	@GetMapping("/produtos")
 	@ApiOperation(value="Retorna uma lista de produtos")
-	public List<ProdutoDTO> listaProdutos(){
-		return produtoService.findAll();
+	public @ResponseBody ArrayList<ProdutoDTO> listaProdutos(){
+		Iterable<ProdutoDTO> listaProdutos = produtoService.findAll();
+		ArrayList<ProdutoDTO> produtos = new ArrayList<ProdutoDTO>();
+		for(ProdutoDTO produto : listaProdutos) {
+			long id = produto.getId();
+			produto.add(linkTo(methodOn(ProdutoResource.class).produto(id)).withSelfRel());
+			produtos.add(produto);
+		}
+		return produtos;
 	}
 	
-	@GetMapping("/produto/{id}")
+	@GetMapping(value="/produto/{id}", produces="application/json")
 	@ApiOperation(value="Busca um produto pelo id")
-	public Produto findById(@PathVariable(value="id") long id){
-		return produtoService.findById(id);
+	public @ResponseBody Produto produto(@PathVariable(value="id") long id){
+		Produto produto = produtoService.findById(id);
+		produto.add(linkTo(methodOn(ProdutoResource.class).listaProdutos()).withRel("Lista de Produtos"));
+		return produto;
 	}
 	
 	@PostMapping("/produto")
