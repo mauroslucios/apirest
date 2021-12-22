@@ -9,9 +9,6 @@ import org.springframework.hateoas.RepresentationModel;
 
 import com.produtos.apirest.model.Produto;
 
-import lombok.Getter;
-
-@Getter
 public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Serializable{
 	
 	
@@ -33,5 +30,45 @@ public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Seria
 	public static List<ProdutoDTO> converter(List<Produto> produtos){
 		return produtos.stream().map(ProdutoDTO::new).collect(Collectors.toList());
 	}
-	
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public BigDecimal getQuantidade() {
+		return quantidade;
+	}
+
+
+	public void setQuantidade(BigDecimal quantidade) {
+		this.quantidade = quantidade;
+	}
+
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+		
 }
