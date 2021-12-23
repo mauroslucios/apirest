@@ -84,13 +84,16 @@ https://martinfowler.com/articles/richardsonMaturityModel.html
 #### Acessar o Pgadmin
 - Vá em localhost:16543
 - Senha e login que estão no docker-compose.yml
+
 ![Captura de tela de 2021-12-23 18-43-56](https://user-images.githubusercontent.com/671694/147294088-649e9c70-b352-4460-ae65-a82b9070e1e7.png)
 
 #### Acessar postgresql pela linha de comando
 - docker exec -it nomeOuIdContainer psql -U postgres
+
 ![Captura de tela de 2021-12-23 18-42-46](https://user-images.githubusercontent.com/671694/147294119-47a30076-2cf3-4e92-b819-f17167493495.png)
 
 ### Requisição postman
+
 ![hateoas](https://user-images.githubusercontent.com/671694/147293964-0f834f1b-a362-423b-ba1e-e74d4edeec7d.png)
 
 #### Citação
