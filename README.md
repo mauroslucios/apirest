@@ -72,7 +72,7 @@ https://martinfowler.com/articles/richardsonMaturityModel.html
 - hateoas
 ### Para executar o postgresql dockerizado siga os seguintes passos:
 #### Instalar docker e docker-compose
-- curl -fsSL https://get.coker.com | sh
+- curl -fsSL https://get.docker.com | sh
 - Colocar usuário no grupo docker -> sudo usermod -aG docker $USER
 - Carregar usuário no novo grupo docker - > newgrp docker
 - Instalar docker-compose -> https://docs.docker.com/compose/install/
