@@ -15,7 +15,7 @@ Esse é considerado o nível mais básico e uma API que implementa apenas esse n
 
 ## Nível 1 — Recursos (Resources)
 
-Nesse nível fazemos uso de recursos para modelar a API, para representar cada recurso fazemos uso de substantivos no plural. No exemplo do crud de cliente, os recursos seriam identificados pelo substantivo “produtos”.
+Nesse nível fazemos uso de recursos para modelar a API, para representar cada recurso fazemos uso de substantivos no plural. No exemplo do crud de produto, os recursos seriam identificados pelo substantivo “produtos”.
 
 ```markdown
 | Verbo HTTP | URI         | Operação              |
@@ -70,24 +70,30 @@ https://martinfowler.com/articles/richardsonMaturityModel.html
 - postman
 - lombok
 - hateoas
+
 ### Para executar o postgresql dockerizado siga os seguintes passos:
+
 #### Instalar docker e docker-compose
+
 - curl -fsSL https://get.docker.com | sh
 - Colocar usuário no grupo docker -> sudo usermod -aG docker $USER
 - Carregar usuário no novo grupo docker - > newgrp docker
 - Instalar docker-compose -> https://docs.docker.com/compose/install/
 
 #### Executar postgresql
+
 - Edite o arquivo docker-compose.yml nos campos senha e usuário do postgres e pgadmin
 - Execute o seguinte comando para subir o container -> docker-compose up -d
 
 #### Acessar o Pgadmin
+
 - Vá em localhost:16543
 - Senha e login que estão no docker-compose.yml
 
 ![Captura de tela de 2021-12-23 18-43-56](https://user-images.githubusercontent.com/671694/147294088-649e9c70-b352-4460-ae65-a82b9070e1e7.png)
 
 #### Acessar postgresql pela linha de comando
+
 - docker exec -it nomeOuIdContainer psql -U postgres
 
 ![Captura de tela de 2021-12-23 18-42-46](https://user-images.githubusercontent.com/671694/147294119-47a30076-2cf3-4e92-b819-f17167493495.png)
