@@ -24,7 +24,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/v1")
 @Api(value="API REST Produtos")
 @CrossOrigin(origins="*")
 public class ProdutoResource {
@@ -39,34 +39,34 @@ public class ProdutoResource {
 		ArrayList<ProdutoDTO> produtos = new ArrayList<ProdutoDTO>();
 		for(ProdutoDTO produto : listaProdutos) {
 			long id = produto.getId();
-			produto.add(linkTo(methodOn(ProdutoResource.class).produto(id)).withSelfRel());
+			produto.add(linkTo(methodOn(ProdutoResource.class).produto(id)).withRel("Listar produto pelo id"));
 			produtos.add(produto);
 		}
 		return produtos;
 	}
 	
-	@GetMapping(value="/produto/{id}", produces="application/json")
+	@GetMapping(value="/produtos/{id}", produces="application/json")
 	@ApiOperation(value="Busca um produto pelo id")
 	public @ResponseBody Produto produto(@PathVariable(value="id") long id){
 		Produto produto = produtoService.findById(id);
-		produto.add(linkTo(methodOn(ProdutoResource.class).listaProdutos()).withRel("Lista de Produtos"));
+		produto.add(linkTo(methodOn(ProdutoResource.class).listaProdutos()).withRel("Ir para lista de todos produtos"));
 		return produto;
 	}
 	
-	@PostMapping("/produto")
+	@PostMapping("/produtos")
 	@ApiOperation(value="Salva um produto no banco")
 	public Produto insertProduto(@RequestBody Produto produto) {
 		return produtoService.insertProduto(produto);
 		
 	}
 	
-	@DeleteMapping("/produto/{id}")
+	@DeleteMapping("/produtos/{id}")
 	@ApiOperation(value="Deleta um produto pelo id")
 	public void deleteProduto(@PathVariable long id) {
 		produtoService.deleteProdutoById(id);
 	}
 	
-	@PutMapping("/produto")
+	@PutMapping("/produtos")
 	@ApiOperation(value="Atualiza um produto completo")
 	public Produto updateProduto(@RequestBody Produto produto) {
 		return produtoService.updateProdutoById(produto);
